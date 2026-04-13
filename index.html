@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>W̵h̸y̵</title>
+    <title>why</title>
     <style>
-        /* CSS: Sayfanın Makyajı ve Atmosferi */
         body {
             background-color: black;
-            color: #8b0000; /* Koyu kan kırmızısı */
-            font-family: 'Courier New', Courier, monospace;
+            color: red;
+            font-family: monospace;
+            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -17,289 +17,91 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
-            transition: background-color 0.5s;
         }
 
-        h1 {
-            font-size: 1.5rem;
-            text-align: center;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
+        /* Başlık stili */
+        #main-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
 
-        .input-group {
-            z-index: 10;
+        /* İnput ve Butonun olduğu alan */
+        #game-ui {
+            display: block;
         }
 
         input {
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            background: black;
             color: red;
-            border: 1px solid #8b0000;
-            font-family: monospace;
+            border: 1px solid red;
             outline: none;
-            width: 250px;
-            transition: 0.3s;
-        }
-
-        input:focus {
-            border-color: white;
-            box-shadow: 0 0 10px red;
+            width: 200px;
         }
 
         button {
-            padding: 12px 20px;
-            background: #8b0000;
+            padding: 10px 20px;
+            background: red;
             color: black;
             border: none;
             cursor: pointer;
             font-weight: bold;
-            font-family: monospace;
-            transition: 0.3s;
         }
 
-        button:hover {
-            background: red;
-            transform: scale(1.05);
-        }
-
-        /* Gizli Görsel Ayarları */
+        /* Gizli Görsel */
         #secretImage {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            display: none;
             max-width: 90%;
-            max-height: 80%;
-            display: none; /* Başlangıçta yok */
+            max-height: 80vh;
             opacity: 0;
-            transition: opacity 3s ease-in;
-            z-index: 5;
-        }
-
-        .glitch {
-            animation: glitch-anim 0.2s infinite alternate;
-        }
-
-        @keyframes glitch-anim {
-            from { transform: translateX(-2px); }
-            to { transform: translateX(2px); }
+            transition: opacity 2s ease-in;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <h1 class="glitch">
-        Ẃ̵̢͎ͬͪ̆͠͝_̵̸̘̪̝̳͖̬͚̫ͥͥ̽͆͌͒ͭ̂͛͊̚͢͟͡h̔_̶̧̛͓̣̖̣͗̅̽̔ͭ̌̓̈́_̸ẙ̷̴̴̸̧̡̖̮̰͈̺͈͉̬̱̋́̐̀́ͮͪ̇̒̄̚<br>
-        d̸̡̨̛͍̥̜͍̪͓̰̤̙̖͉͚͗͛̐̑̂̃ͦ̆̆̓͑ͤͮ͗̍̚<br>
-        y̨̨̛͚̣̥͈̫̰͍̤̺͆͌ͨ̏̅͗̋ͪͮͤ̇ͮ͑͛ͧ͌͂̐ͭ͟<br>
-        l̡͖̼̇̒̿̇́͊̾ͤ̍́̈́͢ẹ̴͎̭͍̤̘̦̣̟̫̪̯̠͍̐̂<br>
-        m̷̛͕̤͇ͯ́̅̏̂̈͠͝è̵̥̙̰̳͐̔̄͟<br>
-        a̷̦̣̙ͮ̎̿̀̋̎͡l̷̸̢̰̼̗̤̗̅͋ͪͮ̏̃̿̄̽ͬͨ͒͞͡ő͗́͒ņ͎e?
+    <h1 id="main-title">
+        Ẃ̵̢͎ͬͪ̆͠͝_̵̸̘̪̝̳͖̬͚̫ͥͥ̽͆͌͒ͭ̂͛͊̚<br>
+        d̸̡̨̛͍̥̜͍̪͓̰̤̙̖͉͚͗͛<br>
+        y̨̨̛͚̣̥͈̫̰͍̤̺͆͌<br>
+        l̡͖̼̇̒<br>
+        m̷̛͕̤͇ͯ<br>
+        a̷̦̣̙ͮalő͗́͒ņ͎e?
     </h1>
 
-    <div class="input-group">
-        <input type="text" id="answer" placeholder="..." autocomplete="off">
-        <button onclick="checkAnswer()">ENTER</button>
-    </div>
-
-    <img id="secretImage" src="Screenshot_20260413_210926_Instagram.jpg" alt="Secret">
-
-    <script>
-        // JS: Sayfanın Beyni
-        function checkAnswer() {
-            const userInput = document.getElementById("answer").value;
-            const correctCode = "3874453316965168901";
-            const img = document.getElementById("secretImage");
-
-            if (userInput === correctCode) {
-                // Şifre doğruysa:
-                img.style.display = "block"; // Resmi DOM'a ekle
-                
-                // Opacity geçişi için çok kısa bekletme
-                setTimeout(() => {
-                    img.style.opacity = "1";
-                    document.body.style.backgroundColor = "#1a0000"; // Arka planı hafifçe değiştir
-                }, 100);
-
-                // Input grubunu gizle (isteğe bağlı)
-                document.querySelector('.input-group').style.display = 'none';
-                document.querySelector('h1').innerText = "found.";
-
-            } else {
-                // Şifre yanlışsa:
-                document.body.style.backgroundColor = "white"; // Anlık parlama
-                setTimeout(() => {
-                    document.body.style.backgroundColor = "black";
-                }, 100);
-                alert("wrong.");
-            }
-        }
-
-        // Enter tuşu desteği
-        document.getElementById("answer").addEventListener("keypress", function(e) {
-            if (e.key === "Enter") checkAnswer();
-        });
-    </script>
-</body>
-</html>            color: black;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background: darkred;
-        }
-
-        #secretImage {
-            margin-top: 30px;
-            max-width: 80%;
-            display: none; /* Başlangıçta tamamen gizli */
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>
-        Ẃ̵̢͎ͬͪ̆͠͝_̵̸̘̪̝̳͖̬͚̫ͥͥ̽͆͌͒ͭ̂͛͊̚͢͟͡h̔_̶̧̛͓̣̖̣͗̅̽̔ͭ̌̓̈́_̸ẙ̷̴̴̸̧̡̖̮̰͈̺͈͉̬̱̋́̐̀́ͮͪ̇̒̄̚<br>
-        d̸̡̨̛͍̥̜͍̪͓̰̤̙̖͉͚͗͛̐̑̂̃ͦ̆̆̓͑ͤͮ͗̍̚͜͜͢͝id 
-        y̨̨̛͚̣̥͈̫̰͍̤̺͆͌ͨ̏̅͗̋ͪͮͤ̇ͮ͑͛ͧ͌͂̐ͭ͟͟͟͞͠ỏ̿u<br>
-        l̡͖̼̇̒̿̇́͊̾ͤ̍́̈́͢ẹ̴͎̭͍̤̘̦̣̟̫̪̯̠͍̐̂̓̏̆̋̈́̔́̅̀ͪ̽̊̑̾́͗ͧͬ̎̊̀̚̚͘͟͟͝͠͡ͅa̺͂̌́v̡̡̦̥̠̟̣̻̦̬̜̝̼̞͖̜̖̋̽͂̔̎̇͐̆̏ͯ́̄͛̌́ͫ̒̕͞͠͡͝e̡͇̞͎̘̾̿̽ͨͨ̉͞ͅ 
-        m̷̛͕̤͇ͯ́̅̏̂̈͠͝è̵̥̙̰̳͐̔̄͟<br>
-        a̷̦̣̙ͮ̎̿̀̋̎͡l̷̸̢̰̼̗̤̗̅͋ͪͮ̏̃̿̄̽ͬͨ͒͞͡ő͗́͒ņ͎̞̣̞̣͚̫̪̭̻͙̞͙͖ͤ͑̒̄̓̔̌ͤ̍ͭ͗̍̑ͩ̉̿͆̌͌͊͞͠e͖̦̘͈͕̭̥̰̱͚ͤ̀ͣ̈̈̾̇ͬͤ̂̔̍̎̉̔ͫ͟?
-    </h1>
-
-    <div class="input-container">
+    <div id="game-ui">
         <input type="text" id="answer" placeholder="...">
-        <button onclick="checkAnswer()">ENTER</button>
+        <button onclick="check()">ENTER</button>
     </div>
 
-    <img id="secretImage" src="senin_gorselin.jpg" alt="Secret Discovery">
+    <img id="secretImage" src="Screenshot_20260413_210926_Instagram.jpg">
 
     <script>
-        function checkAnswer() {
-            const input = document.getElementById("answer").value;
-            const secretCode = "3874453316965168901";
+        function check() {
+            const inputVal = document.getElementById("answer").value;
+            const ui = document.getElementById("game-ui");
             const img = document.getElementById("secretImage");
+            const title = document.getElementById("main-title");
 
-            if (input === secretCode) {
-                // Görseli görünür yap
-                img.style.display = "block";
+            if (inputVal === "3874453316965168901") {
+                // Giriş alanını yok et
+                ui.style.display = "none";
                 
-                // Küçük bir gecikme ile opacity arttırılır (transition çalışması için)
+                // Başlığı değiştir
+                title.innerHTML = "f o u n d";
+
+                // Resmi göster
+                img.style.display = "block";
                 setTimeout(() => {
                     img.style.opacity = "1";
                 }, 50);
-
-                // Atmosfer değişimi (isteğe bağlı)
-                document.body.style.backgroundColor = "darkred";
-                document.body.style.color = "black";
             } else {
-                // Yanlış cevap durumunda ekran kararır veya beyazlaşır
-                document.body.style.backgroundColor = "white";
-                document.body.style.color = "black";
                 alert("wrong.");
-                
-                // 1 saniye sonra eski haline döndür
-                setTimeout(() => {
-                    document.body.style.backgroundColor = "black";
-                    document.body.style.color = "red";
-                }, 1000);
             }
         }
-
-        // "Enter" tuşuna basıldığında da kontrol etsin
-        document.getElementById("answer").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                checkAnswer();
-            }
-        });
     </script>
-
-</body>
-</html>    margin-top: 30px;
-    max-width: 80%;
-    display: none;
-    opacity: 0;
-    transition: opacity 2s;
-}
-</style>
-</head>
-
-<body>
-
-<h1>
-Ẃ̵̢͎ͬͪ̆͠͝_̵̸̘̪̝̳͖̬͚̫ͥͥ̽͆͌͒ͭ̂͛͊̚͢͟͡h̔_̶̧̛͓̣̖̣͗̅̽̔ͭ̌̓̈́_̸ẙ̷̴̴̸̧̡̖̮̰͈̺͈͉̬̱̋́̐̀́ͮͪ̇̒̄̚
-d̸̡̨̛͍̥̜͍̪͓̰̤̙̖͉͚͗͛̐̑̂̃ͦ̆̆̓͑ͤͮ͗̍̚͜͜͢͝id
-y̨̨̛͚̣̥͈̫̰͍̤̺͆͌ͨ̏̅͗̋ͪͮͤ̇ͮ͑͛ͧ͌͂̐ͭ͟͟͟͞͠ỏ̿u
-l̡͖̼̇̒̿̇́͊̾ͤ̍́̈́͢ẹ̴͎̭͍̤̘̦̣̟̫̪̯̠͍̐̂̓̏̆̋̈́̔́̅̀ͪ̽̊̑̾́͗ͧͬ̎̊̀̚̚͘͟͟͝͠͡ͅa̺͂̌́v̡̡̦̥̠̟̣̻̦̬̜̝̼̞͖̜̖̋̽͂̔̎̇͐̆̏ͯ́̄͛̌́ͫ̒̕͞͠͡͝e̡͇̞͎̘̾̿̽ͨͨ̉͞ͅ
-m̷̛͕̤͇ͯ́̅̏̂̈͠͝è̵̥̙̰̳͐̔̄͟
-a̷̦̣̙ͮ̎̿̀̋̎͡l̷̸̢̰̼̗̤̗̅͋ͪͮ̏̃̿̄̽ͬͨ͒͞͡ő͗́͒ņ͎̞̣̞̣͚̫̪̭̻͙̞͙͖ͤ͑̒̄̓̔̌ͤ̍ͭ͗̍̑ͩ̉̿͆̌͌͊͞͠e͖̦̘͈͕̭̥̰̱͚ͤ̀ͣ̈̈̾̇ͬͤ̂̔̍̎̉̔ͫ͟?
-</h1>
-
-<input type="text" id="answer" placeholder="...">
-<button onclick="checkAnswer()">ENTER</button>
-
-<br>
-
-<img id="secretImage" src="Screenshot_20260413_210926_Instagram.jpg">
-
-<script>
-function checkAnswer() {
-    let input = document.getElementById("answer").value;
-
-    if (input === "3874453316965168901") {
-        let img = document.getElementById("secretImage");
-        img.style.display = "block";
-
-        setTimeout(() => {
-            img.style.opacity = "1";
-        }, 100);
-    } else {
-        document.body.style.backgroundColor = "black";
-        document.body.style.color = "white";
-        alert("wrong.");
-    }
-}
-</script>
-
-</body>
-</html>
-<h2>
-Ẃ̵̢͎ͬͪ̆͠͝_̵̸̘̪̝̳͖̬͚̫ͥͥ̽͆͌͒ͭ̂͛͊̚͢͟͡h̔_̶̧̛͓̣̖̣͗̅̽̔ͭ̌̓̈́_̸ẙ̷̴̴̸̧̡̖̮̰͈̺͈͉̬̱̋́̐̀́ͮͪ̇̒̄̚
-d̸̡̨̛͍̥̜͍̜̪͓̰̤̙̖͉͚͗͛̐̑̂̃ͦ̆̆̓͑ͤͮ͗̍̚͜͢͝id
-y̨̨̛͚̣̥͈̫̰͍̤̺͆͌ͨ̏̅͗̋ͪͮͤ̇ͮ͑͛ͧ͌͂̐ͭ͟͟͟͞͠ỏ̿u
-l̡͖̼̇̒̿̇́͊̾ͤ̍́̈́͢ẹ̴͎̭͍̤̘̦̣̟̫̪̯̠͍̐̂̓̏̆̋̈́̔́̅̀ͪ̽̊̑̾́͗ͧͬ̎̊̀̚̚͘͟͟͝͠͡ͅa̺͂̌́v̡̡̦̥̠̟̣̻̦̬̜̝̼̞͖̜̖̋̽͂̔̎̇͐̆̏ͯ́̄͛̌́ͫ̒̕͞͠͡͝e̡͇̞͎̘̾̿̽ͨͨ̉͞ͅ
-m̷̛͕̤͇ͯ́̅̏̂̈͠͝è̵̥̙̰̳͐̔̄͟
-a̷̦̣̙ͮ̎̿̀̋̎͡l̷̸̢̰̼̗̤̗̅͋ͪͮ̏̃̿̄̽ͬͨ͒͞͡ő͗́͒ņ͎̞̣̞̣͚̫̪̭̻͙̞͙͖ͤ͑̒̄̓̔̌ͤ̍ͭ͗̍̑ͩ̉̿͆̌͌͊͞͠e͖̦̘͈͕̭̥̰̱͚ͤ̀ͣ̈̈̾̇ͬͤ̂̔̍̎̉̔ͫ͟?
-</h2>
-
-<br>
-
-<input type="text" id="answer" placeholder="...">
-<button onclick="checkAnswer()">ENTER</button>
-
-<br>
-
-<img id="secretImage" src="senin_gorselin.jpg">
-
-<script>
-function checkAnswer() {
-    let input = document.getElementById("answer").value;
-
-    if (input === "3874453316965168901") {
-        document.getElementById("secretImage").style.display = "block";
-    } else {
-        alert("wrong.");
-    }
-}
-</script>
 
 </body>
 </html>
