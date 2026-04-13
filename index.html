@@ -2,39 +2,86 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>ARG</title>
+<title>why</title>
+
 <style>
-    body {
-        background-color: black;
-        color: red;
-        font-family: monospace;
-        text-align: center;
-        margin-top: 100px;
-    }
-    input {
-        padding: 10px;
-        font-size: 16px;
-        background: black;
-        color: red;
-        border: 1px solid red;
-    }
-    button {
-        padding: 10px;
-        font-size: 16px;
-        background: red;
-        color: black;
-        border: none;
-        cursor: pointer;
-    }
-    img {
-        margin-top: 30px;
-        max-width: 80%;
-        display: none;
-    }
+body {
+    background-color: black;
+    color: red;
+    font-family: monospace;
+    text-align: center;
+    margin-top: 100px;
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+input {
+    padding: 10px;
+    background: black;
+    color: red;
+    border: 1px solid red;
+}
+
+button {
+    padding: 10px;
+    background: red;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+img {
+    margin-top: 30px;
+    max-width: 80%;
+    display: none;
+    opacity: 0;
+    transition: opacity 2s;
+}
 </style>
 </head>
+
 <body>
 
+<h1>
+Ẃ̵̢͎ͬͪ̆͠͝_̵̸̘̪̝̳͖̬͚̫ͥͥ̽͆͌͒ͭ̂͛͊̚͢͟͡h̔_̶̧̛͓̣̖̣͗̅̽̔ͭ̌̓̈́_̸ẙ̷̴̴̸̧̡̖̮̰͈̺͈͉̬̱̋́̐̀́ͮͪ̇̒̄̚
+d̸̡̨̛͍̥̜͍̪͓̰̤̙̖͉͚͗͛̐̑̂̃ͦ̆̆̓͑ͤͮ͗̍̚͜͜͢͝id
+y̨̨̛͚̣̥͈̫̰͍̤̺͆͌ͨ̏̅͗̋ͪͮͤ̇ͮ͑͛ͧ͌͂̐ͭ͟͟͟͞͠ỏ̿u
+l̡͖̼̇̒̿̇́͊̾ͤ̍́̈́͢ẹ̴͎̭͍̤̘̦̣̟̫̪̯̠͍̐̂̓̏̆̋̈́̔́̅̀ͪ̽̊̑̾́͗ͧͬ̎̊̀̚̚͘͟͟͝͠͡ͅa̺͂̌́v̡̡̦̥̠̟̣̻̦̬̜̝̼̞͖̜̖̋̽͂̔̎̇͐̆̏ͯ́̄͛̌́ͫ̒̕͞͠͡͝e̡͇̞͎̘̾̿̽ͨͨ̉͞ͅ
+m̷̛͕̤͇ͯ́̅̏̂̈͠͝è̵̥̙̰̳͐̔̄͟
+a̷̦̣̙ͮ̎̿̀̋̎͡l̷̸̢̰̼̗̤̗̅͋ͪͮ̏̃̿̄̽ͬͨ͒͞͡ő͗́͒ņ͎̞̣̞̣͚̫̪̭̻͙̞͙͖ͤ͑̒̄̓̔̌ͤ̍ͭ͗̍̑ͩ̉̿͆̌͌͊͞͠e͖̦̘͈͕̭̥̰̱͚ͤ̀ͣ̈̈̾̇ͬͤ̂̔̍̎̉̔ͫ͟?
+</h1>
+
+<input type="text" id="answer" placeholder="...">
+<button onclick="checkAnswer()">ENTER</button>
+
+<br>
+
+<img id="secretImage" src="Screenshot_20260413_210926_Instagram.jpg">
+
+<script>
+function checkAnswer() {
+    let input = document.getElementById("answer").value;
+
+    if (input === "3874453316965168901") {
+        let img = document.getElementById("secretImage");
+        img.style.display = "block";
+
+        setTimeout(() => {
+            img.style.opacity = "1";
+        }, 100);
+    } else {
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white";
+        alert("wrong.");
+    }
+}
+</script>
+
+</body>
+</html>
 <h2>
 Ẃ̵̢͎ͬͪ̆͠͝_̵̸̘̪̝̳͖̬͚̫ͥͥ̽͆͌͒ͭ̂͛͊̚͢͟͡h̔_̶̧̛͓̣̖̣͗̅̽̔ͭ̌̓̈́_̸ẙ̷̴̴̸̧̡̖̮̰͈̺͈͉̬̱̋́̐̀́ͮͪ̇̒̄̚
 d̸̡̨̛͍̥̜͍̜̪͓̰̤̙̖͉͚͗͛̐̑̂̃ͦ̆̆̓͑ͤͮ͗̍̚͜͢͝id
