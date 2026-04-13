@@ -1,40 +1,120 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>why</title>
+    <meta charset="UTF-8">
+    <title>why</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: monospace;
+            text-align: center;
+            margin-top: 100px;
+            transition: background-color 0.5s, color 0.5s;
+        }
 
-<style>
-body {
-    background-color: black;
-    color: red;
-    font-family: monospace;
-    text-align: center;
-    margin-top: 100px;
-}
+        h1 {
+            font-size: 20px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
 
-h1 {
-    font-size: 20px;
-    margin-bottom: 40px;
-}
+        .input-container {
+            margin-bottom: 20px;
+        }
 
-input {
-    padding: 10px;
-    background: black;
-    color: red;
-    border: 1px solid red;
-}
+        input {
+            padding: 10px;
+            background: black;
+            color: red;
+            border: 1px solid red;
+            outline: none;
+        }
 
-button {
-    padding: 10px;
-    background: red;
-    color: black;
-    border: none;
-    cursor: pointer;
-}
+        button {
+            padding: 10px;
+            background: red;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-img {
-    margin-top: 30px;
+        button:hover {
+            background: darkred;
+        }
+
+        #secretImage {
+            margin-top: 30px;
+            max-width: 80%;
+            display: none; /* Başlangıçta tamamen gizli */
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>
+        Ẃ̵̢͎ͬͪ̆͠͝_̵̸̘̪̝̳͖̬͚̫ͥͥ̽͆͌͒ͭ̂͛͊̚͢͟͡h̔_̶̧̛͓̣̖̣͗̅̽̔ͭ̌̓̈́_̸ẙ̷̴̴̸̧̡̖̮̰͈̺͈͉̬̱̋́̐̀́ͮͪ̇̒̄̚<br>
+        d̸̡̨̛͍̥̜͍̪͓̰̤̙̖͉͚͗͛̐̑̂̃ͦ̆̆̓͑ͤͮ͗̍̚͜͜͢͝id 
+        y̨̨̛͚̣̥͈̫̰͍̤̺͆͌ͨ̏̅͗̋ͪͮͤ̇ͮ͑͛ͧ͌͂̐ͭ͟͟͟͞͠ỏ̿u<br>
+        l̡͖̼̇̒̿̇́͊̾ͤ̍́̈́͢ẹ̴͎̭͍̤̘̦̣̟̫̪̯̠͍̐̂̓̏̆̋̈́̔́̅̀ͪ̽̊̑̾́͗ͧͬ̎̊̀̚̚͘͟͟͝͠͡ͅa̺͂̌́v̡̡̦̥̠̟̣̻̦̬̜̝̼̞͖̜̖̋̽͂̔̎̇͐̆̏ͯ́̄͛̌́ͫ̒̕͞͠͡͝e̡͇̞͎̘̾̿̽ͨͨ̉͞ͅ 
+        m̷̛͕̤͇ͯ́̅̏̂̈͠͝è̵̥̙̰̳͐̔̄͟<br>
+        a̷̦̣̙ͮ̎̿̀̋̎͡l̷̸̢̰̼̗̤̗̅͋ͪͮ̏̃̿̄̽ͬͨ͒͞͡ő͗́͒ņ͎̞̣̞̣͚̫̪̭̻͙̞͙͖ͤ͑̒̄̓̔̌ͤ̍ͭ͗̍̑ͩ̉̿͆̌͌͊͞͠e͖̦̘͈͕̭̥̰̱͚ͤ̀ͣ̈̈̾̇ͬͤ̂̔̍̎̉̔ͫ͟?
+    </h1>
+
+    <div class="input-container">
+        <input type="text" id="answer" placeholder="...">
+        <button onclick="checkAnswer()">ENTER</button>
+    </div>
+
+    <img id="secretImage" src="senin_gorselin.jpg" alt="Secret Discovery">
+
+    <script>
+        function checkAnswer() {
+            const input = document.getElementById("answer").value;
+            const secretCode = "3874453316965168901";
+            const img = document.getElementById("secretImage");
+
+            if (input === secretCode) {
+                // Görseli görünür yap
+                img.style.display = "block";
+                
+                // Küçük bir gecikme ile opacity arttırılır (transition çalışması için)
+                setTimeout(() => {
+                    img.style.opacity = "1";
+                }, 50);
+
+                // Atmosfer değişimi (isteğe bağlı)
+                document.body.style.backgroundColor = "darkred";
+                document.body.style.color = "black";
+            } else {
+                // Yanlış cevap durumunda ekran kararır veya beyazlaşır
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black";
+                alert("wrong.");
+                
+                // 1 saniye sonra eski haline döndür
+                setTimeout(() => {
+                    document.body.style.backgroundColor = "black";
+                    document.body.style.color = "red";
+                }, 1000);
+            }
+        }
+
+        // "Enter" tuşuna basıldığında da kontrol etsin
+        document.getElementById("answer").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkAnswer();
+            }
+        });
+    </script>
+
+</body>
+</html>    margin-top: 30px;
     max-width: 80%;
     display: none;
     opacity: 0;
