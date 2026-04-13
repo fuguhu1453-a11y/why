@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>level 2</title>
+    <title>why</title>
     <style>
         body {
             background-color: black;
@@ -19,10 +19,21 @@
             overflow: hidden;
         }
 
-        /* Başlık ve UI */
-        #main-title { font-size: 18px; margin-bottom: 20px; }
-        .ui-box { display: block; margin-bottom: 20px; }
-        
+        /* Başlık stili - Sonradan tıklanabilir olacak */
+        #main-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            cursor: default;
+            transition: color 0.3s;
+        }
+
+        .clickable {
+            cursor: pointer !important;
+            text-decoration: underline;
+        }
+
+        #game-ui { display: block; }
+
         input {
             padding: 10px;
             background: black;
@@ -39,105 +50,105 @@
             cursor: pointer;
         }
 
-        /* Görsel Alanı */
-        #imageContainer {
-            position: relative;
-            display: none;
-            max-width: 90%;
-        }
-
         #secretImage {
-            max-width: 100%;
-            height: auto;
+            display: none;
+            max-width: 80%;
+            max-height: 70vh;
             opacity: 0;
             transition: opacity 2s, filter 3s;
+            margin-top: 20px;
         }
 
-        /* Sağ alttaki gizli referans yazısı */
-        #hint-trigger {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            font-size: 10px;
-            color: rgba(255, 0, 0, 0.3);
-            cursor: pointer;
-            user-select: none;
-        }
-
-        /* Kirlenmiş görsel efekti */
+        /* Kirlenmiş Görsel Efekti */
         .corrupted {
-            filter: grayscale(100%) contrast(200%) brightness(50%) blur(2px);
-        }
-    </style>
-</head>
-<body>
-
-    <h1 id="main-title">W̵h̸y̵?</h1>
-
-    <div id="ui-1" class="ui-box">
-        <input type="text" id="ans1" placeholder="...">
-        <button onclick="check1()">ENTER</button>
-    </div>
-
-    <div id="ui-2" class="ui-box" style="display: none;">
-        <input type="text" id="ans2" placeholder="song code?">
-        <button onclick="check2()">SUBMIT</button>
-    </div>
-
-    <div id="imageContainer">
-        <img id="secretImage" src="Screenshot_20260413_210926_Instagram.jpg">
-        <div id="hint-trigger" onclick="showLevel2()">saddest little baby in the room</div>
-    </div>
-
-    <script>
-        const img = document.getElementById("secretImage");
-        const title = document.getElementById("main-title");
-
-        // 1. Şifre Kontrolü
-        function check1() {
-            const val = document.getElementById("ans1").value;
-            if (val === "3874453316965168901") {
-                document.getElementById("ui-1").style.display = "none";
-                document.getElementById("imageContainer").style.display = "block";
-                setTimeout(() => { img.style.opacity = "1"; }, 50);
-            } else { alert("wrong."); }
+            filter: grayscale(100%) contrast(300%) brightness(40%) blur(1px) sepia(100%) hue-rotate(-50deg);
         }
 
-        // Gizli yazıyı tıklayınca 2. seviye kutusunu aç
-        function showLevel2() {
-            document.getElementById("ui-2").style.display = "block";
-            document.getElementById("hint-trigger").style.display = "none";
+        /* Titreme Efekti */
+        .shake {
+            animation: shake 0.1s infinite;
         }
 
-        // 2. Şifre Kontrolü (Oh Klahoma)
-        function check2() {
-            const val = document.getElementById("ans2").value;
-            // YouTube linkindeki sayısal/kod kısım: vAtbaZJC8h8
-            if (val.toLowerCase() === "vatbazjc8h8") {
-                document.getElementById("ui-2").style.display = "none";
-                
-                // Başlığı değiştir
-                title.innerHTML = "S̸̷̵̖̹̟̖̜̫̬S̸A̠ͭ̽D̴_̴̛̲_̴̬Ḑ̸Ȩ̼_̬S̝Ţ̵ O̴N̵E̴";
-                title.style.fontSize = "24px";
-
-                // Görseli kirlet
-                img.classList.add("corrupted");
-                
-                // Ekstra korkutucu efekt: Ekranı titret
-                document.body.style.animation = "glitch 0.1s infinite";
-            } else {
-                alert("not the right song.");
-            }
-        }
-    </script>
-
-    <style>
-        @keyframes glitch {
+        @keyframes shake {
             0% { transform: translate(1px, 1px); }
             50% { transform: translate(-1px, -2px); }
             100% { transform: translate(0, 0); }
         }
     </style>
+</head>
+<body>
+
+    <h1 id="main-title">
+        Ẃ̵̢͎ͬͪ̆͠͝_̵̸̘̪̝̳͖̬͚̫ͥͥ̽͆͌͒ͭ̂͛͊̚<br>
+        d̸̡̨̛͍̥̜͍̪͓̰̤̙̖͉͚͗͛<br>
+        y̨̨̛͚̣̥͈̫̰͍̤̺͆͌<br>
+        l̡͖̼̇̒<br>
+        m̷̛͕̤͇ͯ<br>
+        a̷̦̣̙ͮalő͗́͒ņ͎e?
+    </h1>
+
+    <div id="game-ui">
+        <input type="text" id="answer" placeholder="...">
+        <button onclick="check1()">ENTER</button>
+    </div>
+
+    <img id="secretImage" src="Screenshot_20260413_210926_Instagram.jpg">
+
+    <script>
+        const title = document.getElementById("main-title");
+        const ui = document.getElementById("game-ui");
+        const img = document.getElementById("secretImage");
+
+        // 1. SEVİYE KONTROLÜ
+        function check1() {
+            const val = document.getElementById("answer").value;
+            if (val === "3874453316965168901") {
+                ui.innerHTML = ""; // Buton ve inputu temizle
+                title.innerText = "f o u n d";
+                title.classList.add("clickable");
+                
+                // Başlığa tıklayınca 2. seviye inputunu açan fonksiyonu ata
+                title.onclick = function() {
+                    showLevel2Input();
+                };
+
+                img.style.display = "block";
+                setTimeout(() => { img.style.opacity = "1"; }, 50);
+            } else {
+                alert("wrong.");
+            }
+        }
+
+        // 2. SEVİYE INPUTUNU GÖSTER
+        function showLevel2Input() {
+            title.onclick = null; // Tekrar tıklanmasın
+            title.innerText = "saddest little baby in the room?";
+            title.classList.remove("clickable");
+            
+            ui.innerHTML = `
+                <input type="text" id="ans2" placeholder="ID?">
+                <button onclick="check2()">SUBMIT</button>
+            `;
+        }
+
+        // 2. SEVİYE KONTROLÜ (Jack Stauber - Oh Klahoma ID: vAtbaZJC8h8)
+        function check2() {
+            const val2 = document.getElementById("ans2").value.trim();
+            if (val2 === "vAtbaZJC8h8") {
+                ui.style.display = "none"; // UI'ı tamamen kapat
+                
+                // Başlığı o istediğin korkunç yazıya çevir
+                title.innerHTML = "S̸̷̵̖̹̟̖̜̫̬S̸A̠ͭ̽D̴_̴̛̲_̴̬Ḑ̸Ȩ̼_̬S̝Ţ̵ O̴N̵E̴";
+                title.style.fontSize = "30px";
+
+                // Görseli kirlet ve ekranı titret
+                img.classList.add("corrupted");
+                document.body.classList.add("shake");
+            } else {
+                alert("not the one.");
+            }
+        }
+    </script>
 
 </body>
 </html>
